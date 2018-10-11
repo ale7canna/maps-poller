@@ -1,0 +1,43 @@
+name:                maps-poller
+version:             0.1.0.0
+github:              "ale7canna/maps-poller"
+license:             BSD3
+author:              "Alessandro Canicatti"
+maintainer:          "ales.canicatti@gmail.com"
+copyright:           "2018 Alessandro Canicatti"
+
+# Metadata used when publishing your package
+synopsis:            Google maps poller
+category:            Personal application
+
+description:         Google maps directions poller
+
+dependencies:
+- base >= 4.7 && < 5
+- hspec
+- QuickCheck
+
+library:
+  source-dirs: src
+
+executables:
+  maps-poller-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - maps-poller
+
+tests:
+  maps-poller-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - maps-poller
