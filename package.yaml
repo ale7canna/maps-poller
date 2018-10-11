@@ -16,6 +16,8 @@ dependencies:
 - base >= 4.7 && < 5
 - hspec
 - QuickCheck
+- template
+- text
 
 library:
   source-dirs: src

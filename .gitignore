@@ -2,3 +2,4 @@
 maps-poller.cabal
 *~
 .#*.*
+resource/api_key
