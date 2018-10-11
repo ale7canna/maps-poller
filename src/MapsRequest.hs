@@ -1,11 +1,13 @@
-module Lib where
+module MapsRequest (
+  computeRequest,
+  loadRequestBody,
+  loadAPIKey,
+  mergeApiKey
+  ) where
 
 import Data.Text.Template
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as L
-
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
 
 computeRequest :: IO String
 computeRequest = do
