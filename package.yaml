@@ -18,6 +18,7 @@ dependencies:
 - QuickCheck
 - template
 - text
+- aeson
 
 library:
   source-dirs: src
