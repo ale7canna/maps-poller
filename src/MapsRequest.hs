@@ -7,30 +7,30 @@ module MapsRequest (
 
 import Data.Text.Template
 import qualified Data.Text as T
+import qualified Data.Text.IO as T
 import qualified Data.Text.Lazy as L
 
 computeRequest :: IO String
 computeRequest = do
   body <- loadRequestBody
   key <- loadAPIKey
-  return (mergeApiKey body key)
+  return $ T.unpack $ mergeApiKey (T.strip body) (T.strip key)
 
-loadRequestBody :: IO String
-loadRequestBody = readFile "resource/request_body"
+loadRequestBody :: IO T.Text
+loadRequestBody = T.readFile "resource/request_body"
 
-loadAPIKey :: IO String
-loadAPIKey = readFile "resource/api_key"
+loadAPIKey :: IO T.Text
+loadAPIKey = T.readFile "resource/api_key"
 
-mergeApiKey :: String -> String -> String
+mergeApiKey :: T.Text -> T.Text -> T.Text
 mergeApiKey body key =
-  T.unpack $ L.toStrict $ substitute (T.pack body) (giveContext key)
+ L.toStrict $ substitute (body) (giveContext key)
 
-giveContext :: String -> Context
+giveContext :: T.Text -> Context
 giveContext apikey =
-  context [(T.pack "api_key", T.pack apikey)]
+  context [(T.pack "api_key", apikey)]
 
 -- | Create 'Context' from association list.
 context :: [(T.Text, T.Text)] -> Context
 context assocs x = maybe err id . lookup x $ assocs
   where err = error $ "Could not find key: " ++ T.unpack x
-
