@@ -18,6 +18,8 @@ dependencies:
 - QuickCheck
 - template
 - text
+- http-client
+- http-conduit
 - aeson
 
 library:

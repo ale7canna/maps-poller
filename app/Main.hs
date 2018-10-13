@@ -1,6 +1,6 @@
 module Main where
 
-import MapsRequest
+import Application
 
 main :: IO ()
-main = error "not implemented"
+main = runApplication
