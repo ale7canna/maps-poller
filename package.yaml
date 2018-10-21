@@ -22,6 +22,7 @@ dependencies:
 - http-conduit
 - aeson
 - ini
+- lens
 
 library:
   source-dirs: src
