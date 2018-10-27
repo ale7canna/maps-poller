@@ -23,6 +23,8 @@ dependencies:
 - aeson
 - ini
 - lens
+- postgresql-simple
+- bytestring
 
 library:
   source-dirs: src
